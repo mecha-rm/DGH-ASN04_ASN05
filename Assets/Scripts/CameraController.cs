@@ -18,6 +18,15 @@ public class CameraController : MonoBehaviour
     private Vector3 defaultPosition;
     private Quaternion defaultRotation;
 
+    // the position limits.
+    [Header("Limits")]
+
+    // limits for the position
+    public Vector3 positionLimits = new Vector3(10.0F, 10.0F, 10.0F);
+
+    // if 'true', the position limits are used.
+    public bool usePositionLimits = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -113,5 +122,27 @@ public class CameraController : MonoBehaviour
         {
             transform.rotation = defaultRotation;
         }
+
+        // clamps the position.
+        if(usePositionLimits)
+        {
+            // makes sure the position limits are aboslute values.
+            positionLimits = new Vector3(
+                Mathf.Abs(positionLimits.x),
+                Mathf.Abs(positionLimits.y),
+                Mathf.Abs(positionLimits.z)
+                );
+
+            // final position.
+            Vector3 finalPos = new Vector3(
+                Mathf.Clamp(transform.position.x, -positionLimits.x, +positionLimits.x),
+                Mathf.Clamp(transform.position.y, -positionLimits.y, +positionLimits.y),
+                Mathf.Clamp(transform.position.z, -positionLimits.z, +positionLimits.z)
+                );
+
+            // set to the final position.
+            transform.position = finalPos;
+        }
+
     }
 }
