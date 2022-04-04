@@ -9,10 +9,10 @@ public class CameraController : MonoBehaviour
     public bool cameraLock = false; // locks the camera if 'true'
 
     // vectors for movement.
-    public Vector3 movementSpeed = new Vector3(30.0F, 30.0F, 30.0F);
+    public Vector3 movementSpeed = new Vector3(12.5F, 3.0F, 12.5F);
 
     // vector for rotation.
-    public Vector3 rotationSpeed = new Vector3(75.0F, 75.0F, 75.0F);
+    public Vector3 rotationSpeed = new Vector3(50.0F, 50.0F, 50.0F);
 
     // reset position and orientation
     private Vector3 defaultPosition;

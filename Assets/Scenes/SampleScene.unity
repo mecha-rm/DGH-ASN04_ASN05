@@ -376,18 +376,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fff8507c023109439e604a190c34dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 0}
-  textDisplay: {fileID: 799383513}
+  model: {fileID: 112647146}
+  textDisplay: {fileID: 100982099}
   container: {fileID: 1051666313}
   colliderObject: {fileID: 1418460204}
   colObjectResetPos: {x: 0, y: 0, z: 0}
   colliderPlatform: {fileID: 539839719}
   casingMat: {fileID: 2100000, guid: 19667853e60acda4eb8e874f1ca9494c, type: 2}
+  buttonMat: {fileID: 2100000, guid: b4fd7410d74920d4ab07010b277b3820, type: 2}
   flexSensorMat: {fileID: 2100000, guid: 5326e4cc4176a9e479ee4f9254954a8c, type: 2}
   vibratorMat: {fileID: 2100000, guid: d0b631b774b45974a9069b0cbf4d0634, type: 2}
   ledMat: {fileID: 2100000, guid: f75b2bfc5e808b448be5d9710718b1d3, type: 2}
   arduinoMat: {fileID: 2100000, guid: f3052744abe8d6b4eb07f5c35d5aea53, type: 2}
   breadboardMat: {fileID: 2100000, guid: ea2eb0387f6758a498745a1ec566cd6a, type: 2}
+  batteryMat: {fileID: 2100000, guid: 0e66d524041cb474dab1f42f28b89407, type: 2}
   collisionMat: {fileID: 2100000, guid: abe56cc45cef77b4ebf0c615e1c19230, type: 2}
 --- !u!4 &680676151
 Transform:
@@ -530,8 +532,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 15}
-  m_SizeDelta: {x: 500, y: 630}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 500, y: 880}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &799383515
 MonoBehaviour:
@@ -734,7 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraLock: 0
-  movementSpeed: {x: 15, y: 3, z: 15}
+  movementSpeed: {x: 12.5, y: 3, z: 12.5}
   rotationSpeed: {x: 50, y: 50, z: 50}
   positionLimits: {x: 10, y: 10, z: 10}
   usePositionLimits: 1
@@ -943,6 +945,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: abe56cc45cef77b4ebf0c615e1c19230, type: 2}
+    - target: {fileID: -7851564655858290878, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7851564655858290878, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e66d524041cb474dab1f42f28b89407, type: 2}
     - target: {fileID: -7706276369635660857, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2
@@ -959,6 +969,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: d0b631b774b45974a9069b0cbf4d0634, type: 2}
+    - target: {fileID: -7489668238113606831, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7489668238113606831, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e66d524041cb474dab1f42f28b89407, type: 2}
+    - target: {fileID: -7456367360766201699, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7456367360766201699, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b4fd7410d74920d4ab07010b277b3820, type: 2}
     - target: {fileID: -7401906111536569536, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2
@@ -1303,6 +1329,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: f3052744abe8d6b4eb07f5c35d5aea53, type: 2}
+    - target: {fileID: -135029189609105034, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -135029189609105034, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e66d524041cb474dab1f42f28b89407, type: 2}
     - target: {fileID: -9543065295689163, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
       propertyPath: m_Materials.Array.size
       value: 3
@@ -1331,6 +1365,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: f3052744abe8d6b4eb07f5c35d5aea53, type: 2}
+    - target: {fileID: 564441924936160117, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 564441924936160117, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e66d524041cb474dab1f42f28b89407, type: 2}
     - target: {fileID: 590398647914718328, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2
@@ -1355,10 +1397,26 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: f3052744abe8d6b4eb07f5c35d5aea53, type: 2}
+    - target: {fileID: 916098675275787090, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 916098675275787090, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e66d524041cb474dab1f42f28b89407, type: 2}
     - target: {fileID: 919132149155446097, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
       propertyPath: m_Name
       value: dgh-asn04_asn05-model
       objectReference: {fileID: 0}
+    - target: {fileID: 1382089185498422213, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382089185498422213, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e66d524041cb474dab1f42f28b89407, type: 2}
     - target: {fileID: 1659600629271582165, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2
@@ -1463,6 +1521,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: abe56cc45cef77b4ebf0c615e1c19230, type: 2}
+    - target: {fileID: 3703298932956490540, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703298932956490540, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e66d524041cb474dab1f42f28b89407, type: 2}
     - target: {fileID: 3913830854164496617, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
       propertyPath: m_Materials.Array.size
       value: 3
@@ -1531,6 +1597,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: ea2eb0387f6758a498745a1ec566cd6a, type: 2}
+    - target: {fileID: 5733733932613449036, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5733733932613449036, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e66d524041cb474dab1f42f28b89407, type: 2}
     - target: {fileID: 5754843164721973504, guid: 6b58ad968bbf4074bb336413581fc130, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2
@@ -1697,8 +1771,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 550, y: 725}
+  m_AnchoredPosition: {x: 0, y: -10}
+  m_SizeDelta: {x: 550, y: 950}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1872745790
 MonoBehaviour:
@@ -1733,37 +1807,51 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '[WASDQE] - Move
+  m_Text: 'MOVEMENT
+
+    [WASDQE] - Move
 
     [T] - Reset Position
 
-
-    [Arrow Keys/Page Up &
-    Down] - Rotate
+    [Arrow Keys,
+    Page Up, and Page Down] - Rotate
 
     [R] - Reset Rotation
 
 
-    [H] - Hide/Show Casing
+    VIEW TOGGLES
 
-    [0]
-    - HIde/Show Display
+    [H]
+    - Hide/Show Casing
+
+    [0] - Hide/Show Display
 
 
-    [R] - Arduino
+    HIGHLIGHT TOGGLES
+
+    [U]
+    - Arduino
+
+    [O] - Button
 
     [B] - Breadboard
 
     [C] - Casing
 
     [F]
-    - Flex Sesnor
+    - Flex Sensor
 
     [L] - LED
 
-    [V] - Vibrator
+    [P] - Batteries
 
-    [SpaceBar] - Toggle Collision'
+    [V] - Vibrators
+
+
+    OTHER
+
+    [SpaceBar]
+    - Toggle Collision'
 --- !u!222 &1872745791
 CanvasRenderer:
   m_ObjectHideFlags: 0

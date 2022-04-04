@@ -33,6 +33,9 @@ public class Manager : MonoBehaviour
     // casing material.
     public Material casingMat;
 
+    // the button material.
+    public Material buttonMat;
+
     // flex sensor material.
     public Material flexSensorMat;
 
@@ -48,6 +51,9 @@ public class Manager : MonoBehaviour
     // the breadboard material.
     public Material breadboardMat;
 
+    // the battery material.
+    public Material batteryMat;
+
     // the material for collisions.
     public Material collisionMat;
 
@@ -58,13 +64,8 @@ public class Manager : MonoBehaviour
         if (model == null)
             model = FindObjectOfType<Model>();
 
-        // turning off all the indicators.
-        CasingMaterial = false;
-        FlexSensorMaterial = false;
-        VibratorMaterial = false;
-        LEDMaterial = false;
-        ArduinoMaterial = false;
-        BreadboardMaterial = false;
+        // disables all the highlight materials to start off.
+        DisableAllHighlightMaterials();
 
         // saves the reset position.
         if (colliderObject != null)
@@ -102,6 +103,40 @@ public class Manager : MonoBehaviour
 
         return color;
     }
+    
+    // enables all the highlight materials.
+    public void EnableAllHighlightMaterials()
+    {
+        // turning off all the indicators.
+        CasingMaterial = true;
+        ButtonMaterial = true;
+        FlexSensorMaterial = true;
+        VibratorMaterial = true;
+        LEDMaterial = true;
+        ArduinoMaterial = true;
+        BreadboardMaterial = true;
+        BatteryMaterial = true;
+
+        // the collider material
+        CollisionMaterial = true;
+    }
+
+    // disables all the highlight materials.
+    public void DisableAllHighlightMaterials()
+    {
+        // turning off all the indicators.
+        CasingMaterial = false;
+        ButtonMaterial = false;
+        FlexSensorMaterial = false;
+        VibratorMaterial = false;
+        LEDMaterial = false;
+        ArduinoMaterial = false;
+        BreadboardMaterial = false;
+        BatteryMaterial = false;
+
+        // the collider material
+        CollisionMaterial = false;
+    }
 
     // CASING MATERIAL //
     public bool CasingMaterial
@@ -125,6 +160,30 @@ public class Manager : MonoBehaviour
             CasingMaterial = false;
         else
             CasingMaterial = true;
+    }
+
+    // BUTTON MATERIAL //
+    public bool ButtonMaterial
+    {
+        get
+        {
+            return IsMaterialVisible(buttonMat.color);
+        }
+
+        set
+        {
+            buttonMat.color = SetMaterialVisible(buttonMat.color, value);
+        }
+    }
+
+    // toggles the button material.
+    public void ToggleButtonMaterial()
+    {
+        // toggling the button material.
+        if (ButtonMaterial)
+            ButtonMaterial = false;
+        else
+            ButtonMaterial = true;
     }
 
     // FLEX SENSOR MATERIAL //
@@ -247,6 +306,30 @@ public class Manager : MonoBehaviour
             BreadboardMaterial = true;
     }
 
+    // BATTERY MATERIAL //
+    public bool BatteryMaterial
+    {
+        get
+        {
+            return IsMaterialVisible(batteryMat.color);
+        }
+
+        set
+        {
+            batteryMat.color = SetMaterialVisible(batteryMat.color, value);
+        }
+    }
+
+    // toggles the battery material.
+    public void ToggleBatteryMaterial()
+    {
+        // toggling the battery material.
+        if (BatteryMaterial)
+            BatteryMaterial = false;
+        else
+            BatteryMaterial = true;
+    }
+
     // COLLISION MATERIAL //
     public bool CollisionMaterial
     {
@@ -281,7 +364,7 @@ public class Manager : MonoBehaviour
         }
 
         // hide/show text.
-        if(Input.GetKeyDown(KeyCode.Alpha0))
+        if(Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
         {
             // display text is set.
             if(textDisplay != null)
@@ -291,14 +374,23 @@ public class Manager : MonoBehaviour
             }
         }
 
-        // highlights container.
+        // HIGHLIGHTS
+        // toggles on and off highlights.
+        
+        // container
         if (Input.GetKeyDown(KeyCode.C))
         {
             ToggleCasingMaterial();
         }
 
+        // button
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            ToggleButtonMaterial();
+        }
+
         // flex sensor
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             ToggleFlexSensorMaterial();
         }
@@ -316,7 +408,7 @@ public class Manager : MonoBehaviour
         }
 
         // arduino
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.U))
         {
             ToggleArduinoMaterial();
         }
@@ -327,8 +419,15 @@ public class Manager : MonoBehaviour
             ToggleBreadboardMaterial();
         }
 
+        // battery (li polymer battery)
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ToggleBatteryMaterial();
+        }
+
+
         // spacebar
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             // toggle active.
             if (colliderPlatform != null)
@@ -347,5 +446,12 @@ public class Manager : MonoBehaviour
         {
             CollisionMaterial = model.colliding;
         }
+    }
+
+    // enables all the materials when the application is ending.
+    private void OnApplicationQuit()
+    {
+        // enables all the materials.
+        EnableAllHighlightMaterials();
     }
 }
