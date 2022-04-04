@@ -3,14 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// TODO: restore materials to their defaults.
+
 // manager for the scene.
 public class Manager : MonoBehaviour
 {
+    // the haptic glove model.
+    public Model model;
+
     // the display text.
     public GameObject textDisplay;
 
     // the container for the object.
     public GameObject container;
+
+    // the collider object.
+    public GameObject colliderObject;
+
+    // reset position for the collider object.
+    public Vector3 colObjectResetPos;
+
+    // the collider platform.
+    public GameObject colliderPlatform;
 
     // materials.
     [Header("Highlight Materials")]
@@ -34,9 +48,16 @@ public class Manager : MonoBehaviour
     // the breadboard material.
     public Material breadboardMat;
 
+    // the material for collisions.
+    public Material collisionMat;
+
     // Start is called before the first frame update
     void Start()
     {
+        // finds the model.
+        if (model == null)
+            model = FindObjectOfType<Model>();
+
         // turning off all the indicators.
         CasingMaterial = false;
         FlexSensorMaterial = false;
@@ -44,6 +65,24 @@ public class Manager : MonoBehaviour
         LEDMaterial = false;
         ArduinoMaterial = false;
         BreadboardMaterial = false;
+
+        // saves the reset position.
+        if (colliderObject != null)
+            colObjectResetPos = colliderObject.transform.position;
+    }
+
+    // these don't get triggered since the collider doesn't have a hitbox.
+
+    // entered a collision.
+    private void OnCollisionEnter(Collision collision)
+    {
+        CollisionMaterial = true;
+    }
+
+    // left a collision.
+    private void OnCollisionExit(Collision collision)
+    {
+        CollisionMaterial = false;
     }
 
     // checks if the material is visible.
@@ -208,6 +247,30 @@ public class Manager : MonoBehaviour
             BreadboardMaterial = true;
     }
 
+    // COLLISION MATERIAL //
+    public bool CollisionMaterial
+    {
+        get
+        {
+            return IsMaterialVisible(collisionMat.color);
+        }
+
+        set
+        {
+            collisionMat.color = SetMaterialVisible(collisionMat.color, value);
+        }
+    }
+
+    // toggles the collision material.
+    public void ToggleCollisionMaterial()
+    {
+        // toggling the LED material.
+        if (CollisionMaterial)
+            CollisionMaterial = false;
+        else
+            CollisionMaterial = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -264,6 +327,25 @@ public class Manager : MonoBehaviour
             ToggleBreadboardMaterial();
         }
 
+        // spacebar
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            // toggle active.
+            if (colliderPlatform != null)
+                colliderPlatform.SetActive(!colliderPlatform.activeSelf);
 
+            // if the collider platform is now active, reset hte collision object.
+            if(colliderPlatform.activeSelf)
+            {
+                colliderObject.transform.position = colObjectResetPos;
+            }
+        }
+
+        // checks model for active collision.
+        // this isn't efficient, but it shouldn't be a problem.
+        if(model != null && colliderObject != null)
+        {
+            CollisionMaterial = model.colliding;
+        }
     }
 }
